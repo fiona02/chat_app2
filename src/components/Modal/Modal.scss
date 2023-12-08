@@ -1,0 +1,48 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.438);
+  z-index: 9999;
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-secondary-color);
+
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.02);
+
+    > form .content {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+    > form .action {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  &__header {
+    padding: 4px 0;
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 14px;
+    color: var(--modal-title-color);
+    > h3 {
+      margin: 12px 32px;
+    }
+    > button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 36px;
+      padding: 0 16px;
+      color: var(--text-color);
+    }
+  }
+}

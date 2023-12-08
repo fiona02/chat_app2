@@ -1,0 +1,30 @@
+.SearchBox {
+  position: relative;
+  padding: 8px 0;
+
+  &__input {
+    width: 100%;
+    padding: 12px 16px;
+    padding-right: spacing(6);
+    color: var(--text-color);
+    background-color: var(--input-color);
+    border: none;
+    outline: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    &::placeholder {
+      color: var(--gray-bold);
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    padding: 8px;
+    @include flexCenter();
+    font-size: 18px;
+    color: var(--gray-bold);
+  }
+}

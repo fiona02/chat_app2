@@ -1,0 +1,386 @@
+.ChatPage {
+  // @include flex('row', 'flex-start', 'flex-start', 'nowrap');
+  display: flex;
+  background-color: var(--background-secondary-color);
+  max-width: 100%;
+  overflow: hidden;
+
+  &__user {
+    padding: spacing(2);
+    transition: transform 0.3s;
+    @include breakpointDown($md) {
+      // height: calc(100vh - #{$bottom-nav-height});
+      height: calc(100% - #{$bottom-nav-height});
+      padding: 6px 12px;
+      &.chat-content {
+        transform: translateX(-100%);
+        min-width: 0;
+        padding: 0;
+        // display: none;
+      }
+      &.chat-list {
+        transform: translateX(0);
+        min-width: 100%;
+        width: 100%;
+      }
+      &.chat-info {
+        display: none;
+      }
+    }
+
+    // Style apply to child when bar collapse
+    &.collapse {
+      & .CollapsibleBar__content {
+        transition: all 0.2s;
+        .user {
+          .Avatar__wrapper,
+          .Avatar {
+            transition: all 0.2s;
+            width: 35px !important;
+            height: 35px !important;
+          }
+          &__name {
+            display: none;
+          }
+          &__state {
+            display: none;
+          }
+        }
+        .SearchBox {
+          display: none;
+        }
+        .title {
+          display: none;
+        }
+        .user__last-chats {
+          margin-top: 0;
+
+          .list-chat {
+            transition: all 0.2s;
+            border-top: 1px solid var(--gray-border);
+            padding-top: 4px;
+            margin-top: 8px;
+          }
+          .ChatPreviewItem {
+            transition: all 0.2s;
+            padding: 10px 0px;
+
+            .ChatPreviewItem__wrapper {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    & .CollapsibleBar__title {
+      @include breakpointDown($md) {
+        display: none;
+      }
+    }
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    & .CollapsibleBar__content {
+      // Trick for show child div scrollable (css apply to parent)
+      // overflow: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      @include flex(row, space-between, center);
+
+      > span {
+        font-size: 14px;
+        color: var(--gray-bold);
+      }
+
+      > button {
+        @include flexCenter();
+        background-color: var(--primary-color-background);
+        color: var(--primary-color);
+        padding: 6px;
+        border-radius: $btn-border-radius;
+      }
+    }
+
+    .user {
+      @include flexCenter(column);
+
+      > * {
+        margin-bottom: spacing(1.5);
+      }
+
+      .user__name {
+        color: var(--text-color);
+      }
+
+      &__state {
+        background: var(--primary-color-background);
+        border: none;
+        outline: transparent;
+        font-size: 14px;
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 8px;
+      }
+
+      &__last-chats {
+        margin: spacing(1) 0;
+        // Trick for show child div scrollable (css apply to child)
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .list-chat {
+          margin: 16px 0;
+        }
+      }
+    }
+  }
+
+  &__chat-box {
+    flex-grow: 1;
+    transition: transform 0.3s;
+    @include breakpointDown($md) {
+      transform: translateX(100%);
+      &.chat-content {
+        transform: translateX(0);
+        min-width: 100%;
+        width: 100%;
+      }
+      &.chat-list {
+        transform: translateX(100%);
+        min-width: 0;
+        width: 0;
+      }
+      &.chat-info {
+        transform: translateX(-100%);
+        min-width: 0;
+        width: 0;
+        & .ChatBox {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &__shared-files {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-secondary-color);
+    transition: transform 0.3s;
+    @include breakpointDown($md) {
+      // height: 100vh;
+      height: 100%;
+      transform: translateX(100%);
+      & .CollapsibleBar__title {
+        display: none;
+      }
+      &.chat-content {
+        transform: translateX(100%);
+        min-width: 0;
+        padding: 0;
+      }
+      &.chat-list {
+        display: none;
+      }
+      &.chat-info {
+        transform: translateX(0);
+        min-width: 100%;
+        width: 100%;
+      }
+    }
+
+    .CollapsibleBar__content {
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .user {
+      @include flexCenter(column);
+
+      .user__name {
+        color: var(--text-color);
+      }
+
+      > * {
+        margin-bottom: spacing(1.5);
+      }
+
+      .members {
+        width: 100%;
+      }
+    }
+
+    .type {
+      color: var(--primary-color);
+      @include flex(row, space-between);
+      @include breakpointDown($md) {
+        justify-content: center;
+        .type__wrapper {
+          margin: 0 12px;
+        }
+      }
+
+      svg {
+        font-size: 26px;
+        margin-bottom: 4px;
+      }
+
+      &__wrapper {
+        @include flex(row, flex-start, flex-end);
+        cursor: pointer;
+        background-color: var(--primary-color-background);
+        padding: 18px 28px;
+        border-radius: 12px;
+      }
+
+      &__info {
+        @include flex(column, center);
+        margin-left: 12px;
+      }
+
+      &__title {
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      &__qty {
+        font-size: 24px;
+        color: var(--primary-color-bold);
+        font-weight: 600;
+      }
+    }
+
+    .file-title {
+      @include flex(row, space-between, center);
+      color: var(--gray-bold);
+      margin: spacing(3) 0 spacing(2);
+
+      > span {
+        font-size: 14px;
+      }
+
+      > button {
+        @include flexCenter();
+        color: var(--gray-bold);
+        padding-right: 0;
+      }
+    }
+
+    &.collapse {
+      width: 72px;
+      & .CollapsibleBar__content {
+        .user {
+          .Avatar__wrapper,
+          .Avatar {
+            width: 35px !important;
+            height: 35px !important;
+            transition: all 0.3s;
+          }
+          .AvatarGroup {
+            position: relative;
+            @include flexCenter();
+            .Avatar__wrapper,
+            .Avatar,
+            .extra-avatar {
+              width: 20px !important;
+              height: 20px !important;
+              transition: all 0.3s;
+            }
+            .Avatar__wrapper {
+              left: 0;
+            }
+            .extra-avatar {
+              position: absolute;
+              left: 10px;
+              top: 16px;
+              font-size: 11px;
+            }
+          }
+
+          &__name {
+            display: none;
+          }
+          .Accordion {
+            display: none;
+          }
+        }
+        .file-title {
+          transition: all 0.3s;
+          justify-content: center;
+          > button {
+            display: none;
+          }
+        }
+        .type {
+          display: none;
+        }
+        .FileType {
+          &__wrapper {
+            display: none;
+          }
+          &__btn-expand {
+            display: none;
+          }
+        }
+        .FileType__accordion .Accordion__content {
+          display: none;
+        }
+      }
+    }
+
+    .CollapsibleBar__title > span {
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
+
+  .btn-change-screen {
+    @include breakpointUp($md) {
+      display: none;
+    }
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--gray-soft);
+    margin-right: 12px;
+    svg {
+      font-size: 18px;
+      color: var(--gray-bold);
+    }
+  }
+
+  .wrapper-btn {
+    display: flex;
+    align-items: center;
+    &--left {
+      flex-grow: 1;
+      flex-basis: 50%;
+      max-width: 50%;
+
+      h2 {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+    @include breakpointDown($md) {
+      &--left h2 {
+        font-size: 15px;
+      }
+      .ChatBox__btn {
+        font-size: 15px;
+        font-weight: 400;
+        padding: 8px 6px;
+        margin-right: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.CollapsibleBar {
+  min-width: $collapsible-bar-width;
+  width: $collapsible-bar-width;
+  padding: spacing(2);
+  transition: all 0.4s;
+
+  &.collapse {
+    min-width: 68px;
+    width: 68px;
+    & .CollapsibleBar__title {
+      > span {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    @include flexCenter(row);
+    height: $collapsible-bar-title-height;
+    justify-content: flex-start;
+    padding-bottom: spacing(2);
+    margin-bottom: spacing(2);
+    border-bottom: 1px solid var(--gray-border);
+    color: var(--text-color);
+
+    > button {
+      padding: spacing(1);
+      border-radius: 8px;
+      background-color: var(--gray-soft);
+      margin-right: spacing(1.5);
+
+      > svg {
+        font-size: 18px;
+        color: var(--gray-bold);
+      }
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,119 @@
+.Message {
+  @include flex(row, flex-start, flex-end);
+
+  & + & {
+    margin-top: 12px;
+  }
+
+  &__list {
+    position: relative;
+    max-width: 60%;
+  }
+
+  &__content {
+    position: relative;
+    background-color: var(--background-color);
+    color: var(--message-color);
+    padding: 12px 18px;
+    font-size: 15px;
+    border-radius: 12px;
+    margin-left: 16px;
+    width: 100%;
+    font-weight: 300;
+    line-height: 23px;
+
+    // Break word if text too long
+    word-wrap: normal;
+    word-break: break-all;
+    white-space: normal;
+
+    @include breakpointDown($md) {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+
+    @include breakpointDown($sm) {
+      font-size: 13px;
+    }
+
+    > a {
+      color: var(--link-color);
+    }
+
+    & + & {
+      margin-top: 8px;
+    }
+
+    .link-download-img {
+      @include flexCenter();
+    }
+    .image-message {
+      object-fit: cover;
+      max-width: 200px;
+      @include breakpointDown($md) {
+        max-width: 170px;
+      }
+      @include breakpointDown($sm) {
+        max-width: 145px;
+      }
+    }
+
+    .video-message {
+      width: 200px;
+      height: 130px;
+      @include breakpointDown($md) {
+        width: 150px;
+      }
+    }
+
+    &--first {
+      $triangle-width: 10px;
+      border-bottom-left-radius: unset;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -$triangle-width;
+        border-bottom: 12px solid var(--background-color);
+        border-left: $triangle-width solid transparent;
+      }
+
+      // &--author {
+      //   border-bottom-right-radius: unset;
+      //   &::before {
+      //     content: '';
+      //     position: absolute;
+      //     bottom: 0;
+      //     right: -$triangle-width;
+      //     border-bottom: 12px solid #fff;
+      //     border-right: $triangle-width solid transparent;
+      //   }
+      // }
+    }
+  }
+
+  &--author {
+    flex-direction: row-reverse;
+
+    .Avatar__wrapper {
+      margin-left: 16px;
+    }
+
+    .Message__content--first {
+      border-bottom-right-radius: unset;
+      border-bottom-left-radius: 12px;
+      margin-left: 0;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: -10px;
+        border-bottom: 12px solid var(--background-color);
+        border-right: 10px solid transparent;
+      }
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

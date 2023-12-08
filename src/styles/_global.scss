@@ -1,0 +1,29 @@
+* {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; //1rem = 10px
+  font-family: 'Sofia Pro', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.Toastify__toast {
+  .Toastify__toast-body {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Sofia Pro', sans-serif;
+  }
+}
