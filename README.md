@@ -9,13 +9,6 @@ Chat-app realtime
 https://genz-chat.web.app
 
 
-## Installation 
-
-Clone
-
-```bash
-git clone https://github.com/phongduybui/chat-app.git
-```
 
 Install dependencies with npm
 
@@ -41,6 +34,6 @@ Dribbble design: [KeyVue chat from widelab](https://dribbble.com/shots/14953087-
 
 ## Feedback
 
-If you have any feedback, please reach out to [me](mailto:buiduyphong921@gmail.com)
+If you have any feedback, please reach out to [me](mailto:michfiona790@gmail.com)
 
   
